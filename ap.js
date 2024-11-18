@@ -2,7 +2,7 @@
 
 
 // Adicionano lista de palavras para o jogo
-const listaPalavras = ['javascript','html','youtube','css'];
+const listaPalavras = ['ebria','jaca','manga','vanesssssa'];
 
 let palavraEscolhida;
 let exibicaoPalavra;
@@ -14,7 +14,7 @@ let tentativasRestates;
 
 function iniciarJogo(){
     //escolher palavra aleatoria dalista
-    palavraEscolhida = listaPalavras[Math.floor(Math.random(listaPalavras.length))]
+    palavraEscolhida = listaPalavras[Math.floor(Math.random()*listaPalavras.length)]
 
     //inivializar a exibição 
     exibicaoPalavra = Array(palavraEscolhida.length).fill('_');
@@ -47,7 +47,7 @@ function atualizarExibicao(){
 
 function chutarLetra(){
     const entradaLetra = document.getElementById('entrada-letra');
-    const letra = entradaLetra.value.toLowarCase;
+    const letra = entradaLetra.value.toLowerCase();
 
     if(!letra.match(/[a-zà-ùç]/i)){
         alert('Por favor, insira uma letra válida.')
@@ -78,6 +78,11 @@ function chutarLetra(){
 function encerrarJogo(mensagem){
     //desanilitar campinho
     document.getElementById('entrada-letra').disabled = true;
+
+     // Exibir mensagem
+     if (tentativasRestates === 0) {
+        mensagem += ` A palavra era: "${palavraEscolhida}".`;
+    }
 
     //exibir mensagem
     document.getElementById('mensagem').innerText = mensagem;
